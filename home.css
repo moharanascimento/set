@@ -31,7 +31,7 @@ header{
 nav.about> a{
     text-decoration: none;
     padding-right: 20px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--black-gray-color);
 }
 
@@ -49,7 +49,7 @@ img{
 p#set{
     text-align: center;
     font-family: 'Source Sans 3';
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-left: 0px;
     margin-right: 20px;
 }
