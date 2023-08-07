@@ -2,6 +2,8 @@
 
 :root{
     --icon-color: #3dac9f;
+    --black-suave-color:rgba(0,0,0,0.192);
+    --black-gray-color: #000000be;
 }
 
 body,p#set,div{
@@ -9,7 +11,7 @@ body,p#set,div{
     padding: 0px;
     font-size: 1.2rem;
     font-family: 'Source Sans 3';
-    color: black;
+    color: var(--black-gray-color);
 }
 
 body{
@@ -22,11 +24,15 @@ header{
     padding: 10px;
     align-items: center;
     background-color: white;
+    /* box-shadow: 0.5px 0.5px 0.5px 0px var(--black-suave-color); */
+    box-shadow: 0px 2px 3px var(--black-suave-color);    
 }
 
 nav.about> a{
     text-decoration: none;
     padding-right: 20px;
+    font-size: 0.9rem;
+    color: var(--black-gray-color);
 }
 
 .ml-auto{
@@ -37,12 +43,13 @@ nav.about> a{
 img{
     display: block;
     margin-right: 20px;
+    margin-left: 10px;
 }
 
 p#set{
     text-align: center;
     font-family: 'Source Sans 3';
-    font-size: 30px;
+    font-size: 1.2rem;
     margin-left: 0px;
     margin-right: 20px;
 }
@@ -54,7 +61,7 @@ footer{
     left: 0;
     bottom: 0;
     width: 100%;
-    color:black;
+    color:var(--black-gray-color);
     text-align: center;
     font: normal 10pt Arial, Helvetica, sans-serif;
 }
