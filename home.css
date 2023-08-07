@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300&display=swap');
 
 :root{
-    --icon-color: #3EB7A9;
+    --icon-color: #3dac9f;
 }
 
-body,p#set{
+body,p#set,div{
     margin: 0px;
     padding: 0px;
     font-size: 1.2rem;
@@ -15,7 +15,6 @@ body,p#set{
 a{
     text-decoration: none;
     display: block;
-    /* padding: 20px; */
     padding-right: 20px;
 }
 
@@ -26,70 +25,34 @@ body{
 header{
     display: flex;
     justify-content: space-between;
+    justify-content: flex-start;
     padding: 10px;
     align-items: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     background-color: white;
 }
 
 img{
-    display: inline-block;
+    display: block;
+    margin-right: 20px;
 }
 
 p#set{
-    text-align: left;
+    text-align: center;
     font-family: 'Source Sans 3';
     font-size: 30px;
     margin-left: 0px;
+    margin-right: 20px;
 }
-
-/* picture{
-    display: inline-block;
-}
-
-img{
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 7%;
-}
-
-h1{
-    display: inline-block;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 30px;
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-bottom: 10px;
-    height: 100%;
-}
-
-nav{
-    display: inline-block;
-}
-
-p#set{
-    position: absolute;
-    display: inline-block;
-    text-align: center;
-    width: 400px;
-}
-
-a{
-    display: inline-block;
-    text-align: right;
-    font-size: 12pt;
-} */
 
 footer{
-    /* background-color: var(--icon-color); */
+    background-color: var(--icon-color);
     position: fixed;
     padding: 8px;
     left: 0;
     bottom: 0;
     width: 100%;
-    color:gray;
+    color:black;
     text-align: center;
     font: normal 10pt Arial, Helvetica, sans-serif;
 }
