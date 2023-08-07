@@ -12,24 +12,26 @@ body,p#set,div{
     color: black;
 }
 
-a{
-    text-decoration: none;
-    display: block;
-    padding-right: 20px;
-}
-
 body{
     background: white;
 }
 
 header{
     display: flex;
-    justify-content: space-between;
     justify-content: flex-start;
     padding: 10px;
     align-items: center;
-    /* flex-wrap: wrap; */
     background-color: white;
+}
+
+nav.about> a{
+    text-decoration: none;
+    padding-right: 20px;
+}
+
+.ml-auto{
+    margin-left: auto;
+    text-align: center;
 }
 
 img{
