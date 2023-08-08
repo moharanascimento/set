@@ -76,6 +76,8 @@ h1{
     color: var(--icon-color);
     font-size: 3rem;
     margin: 15px 0px 0px 0px;
+    padding-right: 2px;
+    padding-left: 2px;
 }
 
 h2{
