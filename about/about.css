@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300&display=swap');
 
 :root{
-    --icon-color: #3dac9f;
+    --icon-color: hsl(173, 48%, 46%);
     --black-suave-color:rgba(0,0,0,0.192);
     --black-gray-color: #000000be;
 }
@@ -63,6 +63,7 @@ body{
     /* background-image: url(contact-background.png); */
     /* background-image: url(pexels-ronald-hayward-1702140.jpg); */
     background-position: 0 1000px;
+    background-color: white;
 }
 
 .container{
@@ -83,9 +84,24 @@ h2{
 }
 
 p{
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
+    margin: 10px;
 }
+
+p#links{
+    display: inline-block;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+}
+
+.flex > p{
+    margin: 10px 20px 10px 20px;
+}
+
 
 footer{
     background-color: var(--icon-color);
