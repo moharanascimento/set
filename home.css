@@ -71,7 +71,7 @@ footer{
 .grid1{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-     margin-right: 20px;
+    margin-right: 20px;
     margin-left: 20px;
     grid-gap: 20px;
 }
@@ -99,4 +99,10 @@ p#results{
     margin-top: 60px;
 }
 
+@media (max-width: 600px){
+    .grid1{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
 
