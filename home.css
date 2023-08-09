@@ -15,6 +15,10 @@ body,p#set,div{
     color: var(--black-gray-color);
 }
 
+p{
+    font-weight: bold;
+}
+
 body{
     background: white;
 }
@@ -83,6 +87,10 @@ div#user-menu, div#model, div#help-menu{
     border: 1px solid black;
     border-radius: 15px;
     box-shadow: 0px 2px 3px var(--black-suave-color);
+}
+
+p#title{
+    font-size: 1.35rem;
 }
 
 .results{

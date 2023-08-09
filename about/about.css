@@ -106,6 +106,9 @@ p#links{
     padding-bottom: 40px;
 }
 
+p{
+    font-weight: bold;
+}
 
 img#icons{
     width: 100%;
