@@ -5,13 +5,14 @@
     --icon-color: #3dac9f;
     --black-suave-color:rgba(0,0,0,0.192);
     --black-gray-color: #000000be;
+    --font: 'Source Sans 3';
 }
 
 body,p#set,div{
     margin: 0px;
     padding: 0px;
     font-size: 1.2rem;
-    font-family: 'Source Sans 3';
+    font-family: var(--font);
     color: var(--black-gray-color);
 }
 
@@ -74,7 +75,7 @@ footer{
 /* Part 4: Content settings */
 .grid1{
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 0.7fr 2fr 1fr;
     margin-right: 20px;
     margin-left: 20px;
     grid-gap: 20px;
@@ -114,3 +115,100 @@ p#results{
     }
 }
 
+input{
+    border-radius: 10px;
+    width: 50%;
+    text-align: center;
+    height: 25px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    border-width: 1px;
+}
+
+div#inputs{
+    display: block;
+    text-align: center;
+}
+
+.container_input{
+    display: flex;
+    justify-content: center;
+}
+
+#button{
+    text-align: center;
+}
+
+input#bt{
+    width: 40%;
+    height: 30px;
+    justify-content: center;
+    text-align: center;
+    border-radius: 20px;
+    background-color: var(--icon-color);
+    font-size: 1rem;
+    font-family: var(--font);
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+div#user-menu>p{
+    margin: 10px;
+}
+
+div#model>p{
+    margin: 10px;
+}
+div#help-menu>p{
+    margin: 10px;
+}
+
+.loads{
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(3,1fr);
+    margin: 0 auto;
+    padding-right: 20px;
+    padding-left: 20px;
+    grid-gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+button{
+    background-color: var(--icon-color);
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+button > img{
+    align-items: center;
+    margin: 0 auto;
+    padding-top: 5px;
+}
+
+div#load-settings{
+    margin: 0px 20px 0px 20px;
+}
+
+div#load-settings>p{
+    text-align: center;
+    font-size: 1rem;
+}
+
+.boundary{
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(3,1fr);
+    margin: 0 auto;
+    padding-right: 20px;
+    padding-left: 20px;
+    grid-gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+div#boundary-settings>p{
+    text-align: center;
+    font-size: 1rem;
+}

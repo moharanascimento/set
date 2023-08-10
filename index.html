@@ -21,8 +21,42 @@
                <p id="title" style="text-align: center;">Start here</p>
                 <div id="user-menu">
                     <p style="text-align: center;">Create beam or column</p>
+                    <div class="container_input">
+                        <div id="inputs"><input type="number" name="x1" id="x1"> <strong>x1</strong></div>
+                        <div id="inputs">
+                            <input type="number" name="y1" id="y1">
+                            <strong>y1</strong>
+                        </div>
+                    </div>
+                    <div class="container_input">
+                        <div id="inputs">
+                            <input type="number" name="x2" id="x2">
+                            <strong>x2</strong>
+                        </div>
+                        <div id="inputs">
+                            <input type="number" name="y2" id="y2">
+                            <strong>y2</strong>
+                        </div>
+                    </div>
+                    <div id="button"><input id="bt" type="button" value="Create" onclick="createLine()"></div></p>
                     <p style="text-align: center;">Add loads</p>
+                    <div class="loads">
+                        <button type="button"><img src="images/conc-and-mom-load.png" height="40px"></button>
+                        <button type="button"><img src="images/retangular-load.png" height="40px"></button>
+                        <button type="button"><img src="images/trapezoidal-load.png" height="40px"></button>
+                    </div>
+                    <div id="load-settings">
+                            <p>Select one load above</p>
+                    </div>
                     <p style="text-align: center;">Add boundary conditions</p>
+                    <div class="boundary">
+                        <button type="button"><img src="images/1degree-support.png" height="40px"></button>
+                        <button type="button"><img src="images/2degree-support.png" height="40px"></button>
+                        <button type="button"><img src="images/3degree-support.png" height="40px"></button>
+                    </div>
+                    <div id="boundary-settings">
+                        <p>Select one boundary condition above</p>
+                </div>
                </div> 
             </div>
             <div>
