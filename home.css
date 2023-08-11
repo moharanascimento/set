@@ -113,6 +113,15 @@ p#results{
         display: grid;
         grid-template-columns: 1fr;
     }
+    #myCanvas{
+        display: flex;
+        image-rendering: pixelated;
+        background-color: lightgray;
+        margin: 0 auto;
+        margin-top: 15px;
+        border-radius: 15px;
+        width: 100%;
+    }
 }
 
 input{
@@ -211,4 +220,15 @@ div#load-settings>p{
 div#boundary-settings>p{
     text-align: center;
     font-size: 1rem;
+}
+
+/* Part 4: Manage canvas */
+
+canvas{
+    display: flex;
+    image-rendering: pixelated;
+    background-color: lightgray;
+    margin: 0 auto;
+    margin-top: 15px;
+    border-radius: 15px;
 }
