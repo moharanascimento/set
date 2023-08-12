@@ -75,8 +75,14 @@ function createLine(){
 
 function createDraw(minX,minY,maxX,maxY){
     centerX = ((maxX-minX)/2)
-    somaX = (canvasWidth/2)-centerX
     centerY = ((maxY-minY)/2)
+
+    if(maxX == 0 && minX == 0){
+        somaX = canvasWidth/2
+    }
+    else{
+        somaX = (canvasWidth/2)-centerX
+    }
 
     if(maxY == 0 && minY == 0){
         somaY = canvasHeight/2
@@ -85,9 +91,10 @@ function createDraw(minX,minY,maxX,maxY){
         somaY = (canvasHeight/2)-centerY
     }
 
+    console.log(somaY)
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.beginPath();
-    context.moveTo(points[0][0]+somaX,canvasHeight-somaY);
+    context.moveTo(points[0][0]+somaX,canvasHeight-points[0][1]-somaY);
 
     for (var count = 1; count<points.length; count++){
         context.lineTo(points[count][0]+somaX,canvasHeight-points[count][1]-somaY);
