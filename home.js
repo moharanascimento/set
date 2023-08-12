@@ -9,11 +9,11 @@ var existPoint = true
 canvas = document.getElementById("myCanvas")
 context = canvas.getContext('2d');
 
-// canvas.width = 900;
-// canvas.height = 450;
+canvas.width = 500;
+canvas.height = 500;
 
-var canvasWidth = canvas.width;
-var canvasHeight = canvas.height;
+const canvasWidth = canvas.width;
+const canvasHeight = canvas.height;
 
 // const originX = canvasWidth*(1.5/8); 
 // const originY = canvasHeight*(5/7); 
@@ -73,6 +73,13 @@ function createLine(){
 }
 }
 
+function drawLine(x1,y1,x2,y2){
+    context.beginPath();
+    context.moveTo(x1,y1);
+    context.lineTo(x2,y2);
+    context.stroke();
+}
+
 function createDraw(minX,minY,maxX,maxY){
     centerX = ((maxX-minX)/2)
     centerY = ((maxY-minY)/2)
@@ -92,14 +99,20 @@ function createDraw(minX,minY,maxX,maxY){
     }
 
     console.log(somaY)
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.beginPath();
-    context.moveTo(points[0][0]+somaX,canvasHeight-points[0][1]-somaY);
-
-    for (var count = 1; count<points.length; count++){
-        context.lineTo(points[count][0]+somaX,canvasHeight-points[count][1]-somaY);
+    context.clearRect(0, 0, canvasWidth, canvasHeight);
+    context.clearRect(0, 0, canvasWidth, canvasHeight);
+    console.log('create line')
+    
+    for (var count = 0; count<points.length; count+=2){
+        aux1 = count
+        aux2 = count+1
+        console.log(`count: ${aux1} aux: ${aux2}`)
+        p1x = points[aux1][0]+somaX
+        p1y = canvasHeight-points[aux1][1]-somaY
+        p2x = points[aux2][0]+somaX
+        p2y = canvasHeight-points[aux2][1]-somaY
+        drawLine(p1x,p1y,p2x,p2y)
+        console.log(points)
     }
-    context.stroke();
-    context.closePath();
 }
 
