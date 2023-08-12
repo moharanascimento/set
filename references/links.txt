@@ -1,0 +1,6 @@
+        <!-- <ul>
+            <li><img src="icone-youtube.png" alt="Youtube"> <a href="https://www.youtube.com/@reforcaeengenharia8623" target="_blank" rel="external">/reforçaeengenharia</a> - Apoie o meu trabalho se inscrevendo no meu canal do Youtube</li>
+            <li><img src="icone-linkedin.png" alt="Linkedin"> <a href="https://www.linkedin.com/in/mohara-nascimento-b73000104/" target="_blank" rel="external">/moharanascimento</a> -  Se conecte comigo pelo Linkedin</li>
+            <li><img src="icone-github.png" alt="github"><a href="https://github.com/moharanascimento">/moharanascimento</a> - Veja meu repositório no GitHub</li>
+            <li><img src="icone-instagram.png" alt="instagram"><a href="https://www.instagram.com/reforcaeengenharia/">/reforcaeengenharia</a> -  Me acompanhe pelo Instagram</li>
+        </ul> -->
