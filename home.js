@@ -9,8 +9,8 @@ var existPoint = true
 canvas = document.getElementById("myCanvas")
 context = canvas.getContext('2d');
 
-canvas.width = 900;
-canvas.height = 450;
+// canvas.width = 900;
+// canvas.height = 450;
 
 var canvasWidth = canvas.width;
 var canvasHeight = canvas.height;
@@ -27,14 +27,6 @@ maxX = -Infinity;
 minY = Infinity;
 maxY = -Infinity;
 
-function drawLine(cx1,cy1,cx2,cy2){
-    context.beginPath();
-    context.moveTo(cx1, canvasHeight-cy1);
-    context.lineTo(cx2, canvasHeight-cy2);
-    context.stroke();
-    context.closePath();
-}
-
 function createLine(){
     if(x1.value.length == 0 || y1.value.length == 0 || x2.value.length == 0 || y2.value.length == 0){
         existPoint = false
@@ -46,9 +38,10 @@ function createLine(){
         var coordY1 = y1.value;
         var coordY2 = y2.value;                        
         
-
-        points.push([coordX1,coordY1]);
-        points.push([coordX2,coordY2]);
+        // alert(`${canvasWidth},${canvasHeight}`);
+        points.push([Number(coordX1),Number(coordY1)]);
+        points.push([Number(coordX2),Number(coordY2)]);
+        console.log(points);
 
         if (coordX1<minX){
             minX = coordX1
@@ -76,8 +69,30 @@ function createLine(){
             maxY = coordY2
         }
 
-        drawLine(coordX1,coordY1,coordX2,coordY2);
+        createDraw(minX,minY,maxX,maxY);
 }
 }
 
+function createDraw(minX,minY,maxX,maxY){
+    centerX = ((maxX-minX)/2)
+    somaX = (canvasWidth/2)-centerX
+    centerY = ((maxY-minY)/2)
+
+    if(maxY == 0 && minY == 0){
+        somaY = canvasHeight/2
+    }
+    else{
+        somaY = (canvasHeight/2)-centerY
+    }
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.beginPath();
+    context.moveTo(points[0][0]+somaX,canvasHeight-somaY);
+
+    for (var count = 1; count<points.length; count++){
+        context.lineTo(points[count][0]+somaX,canvasHeight-points[count][1]-somaY);
+    }
+    context.stroke();
+    context.closePath();
+}
 

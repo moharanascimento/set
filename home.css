@@ -227,8 +227,9 @@ div#boundary-settings>p{
 canvas{
     display: flex;
     image-rendering: pixelated;
-    background-color: lightgray;
+    /* background-color: lightgray; */
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
-    margin-top: 15px;
     border-radius: 15px;
 }
