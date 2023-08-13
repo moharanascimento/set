@@ -143,12 +143,17 @@ div#inputs{
     justify-content: center;
 }
 
-#button{
-    text-align: center;
+.container_buttons{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3,1fr);
 }
 
 input#bt{
-    width: 40%;
+    width: 100%;
     height: 30px;
     justify-content: center;
     text-align: center;
@@ -158,6 +163,21 @@ input#bt{
     font-family: var(--font);
     font-weight: 600;
     margin-bottom: 0px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+input#bt:hover{
+    background: #3dac9f79;
+}
+
+input#bt:active{
+    background: var(--icon-color);
+    top: 2px;
+}
+
+#button{
+    text-align: center;
 }
 
 div#user-menu>p{

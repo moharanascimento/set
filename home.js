@@ -80,6 +80,17 @@ function drawLine(x1,y1,x2,y2){
     context.stroke();
 }
 
+function clearCanvas(){
+    context.clearRect(0, 0, canvasWidth, canvasHeight);
+    points = [];
+}
+
+function undoLine(){
+    points.pop();
+    points.pop();
+    createDraw(minX,minY,maxX,maxY);
+}
+
 function createDraw(minX,minY,maxX,maxY){
     centerX = ((maxX-minX)/2)
     centerY = ((maxY-minY)/2)
@@ -100,8 +111,6 @@ function createDraw(minX,minY,maxX,maxY){
 
     console.log(somaY)
     context.clearRect(0, 0, canvasWidth, canvasHeight);
-    context.clearRect(0, 0, canvasWidth, canvasHeight);
-    console.log('create line')
     
     for (var count = 0; count<points.length; count+=2){
         aux1 = count
