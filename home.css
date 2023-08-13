@@ -215,6 +215,15 @@ button > img{
     padding-top: 5px;
 }
 
+button:hover{
+    background: #3dac9f79;
+}
+
+button:active{
+    background: var(--icon-color);
+    top: 2px;
+}
+
 div#load-settings{
     margin: 0px 20px 0px 20px;
 }
