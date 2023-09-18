@@ -15,11 +15,6 @@ canvas.height = 500;
 const canvasWidth = canvas.width;
 const canvasHeight = canvas.height;
 
-// const originX = canvasWidth*(1.5/8); 
-// const originY = canvasHeight*(5/7); 
-
-// context.fillRect(originX-5, originY-5, 10, 10);
-
 context.lineWidth = 2;
 
 minX = Infinity;
@@ -27,101 +22,97 @@ maxX = -Infinity;
 minY = Infinity;
 maxY = -Infinity;
 
-function createLine(){
-    if(x1.value.length == 0 || y1.value.length == 0 || x2.value.length == 0 || y2.value.length == 0){
+function createLine() {
+    if (x1.value.length == 0 || y1.value.length == 0 || x2.value.length == 0 || y2.value.length == 0) {
         existPoint = false
         alert("Set all coordinates before")
-    } else{
+    } else {
 
         var coordX1 = x1.value;
         var coordX2 = x2.value;
         var coordY1 = y1.value;
-        var coordY2 = y2.value;                        
-        
-        // alert(`${canvasWidth},${canvasHeight}`);
-        points.push([Number(coordX1),Number(coordY1)]);
-        points.push([Number(coordX2),Number(coordY2)]);
+        var coordY2 = y2.value;
+
+        points.push([Number(coordX1), Number(coordY1)]);
+        points.push([Number(coordX2), Number(coordY2)]);
         console.log(points);
 
-        if (coordX1<minX){
-            minX = coordX1
-        }
-        if (coordX2<minX){
-            minX = coordX2
-        }
-        if (coordY1<minY){
-            minY = coordY1
-        }
-        if (coordY2<minY){
-            minY = coordY2
-        }
+        maxX = Math.max(...[maxX,coordX1,coordX2]);
+        maxY = Math.max(...[maxY,coordY1,coordY2]);
+        minX = Math.min(...[minX,coordX1,coordX2]);
+        minY = Math.min(...[minY,coordY1,coordY2]);
 
-        if (coordX1>maxX){
-            maxX = coordX1
-        }
-        if (coordX2>maxX){
-            maxX = coordX2
-        }
-        if (coordY1>maxY){
-            maxY = coordY1
-        }
-        if (coordY2>maxY){
-            maxY = coordY2
-        }
-
-        createDraw(minX,minY,maxX,maxY);
-}
+        // createDraw(minX, minY, maxX, maxY);
+        scale = 1
+        draw();
+    }
 }
 
-function drawLine(x1,y1,x2,y2){
+function drawLine(x1, y1, x2, y2) {
     context.beginPath();
-    context.moveTo(x1,y1);
-    context.lineTo(x2,y2);
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
     context.stroke();
 }
 
-function clearCanvas(){
+function clearCanvas() {
     context.clearRect(0, 0, canvasWidth, canvasHeight);
     points = [];
+    minX = Infinity;
+    maxX = -Infinity;
+    minY = Infinity;
+    maxY = -Infinity;
 }
 
-function undoLine(){
+function undoLine() {
     points.pop();
     points.pop();
-    createDraw(minX,minY,maxX,maxY);
+    createDraw(minX, minY, maxX, maxY);
 }
 
-function createDraw(minX,minY,maxX,maxY){
-    centerX = ((maxX-minX)/2)
-    centerY = ((maxY-minY)/2)
+function createDraw(minX, minY, maxX, maxY) {
+    centerX = ((maxX - minX) / 2)
+    centerY = ((maxY - minY) / 2)
 
-    if(maxX == 0 && minX == 0){
-        somaX = canvasWidth/2
+    if (maxX == 0 && minX == 0) {
+        somaX = canvasWidth / 2
     }
-    else{
-        somaX = (canvasWidth/2)-centerX
-    }
-
-    if(maxY == 0 && minY == 0){
-        somaY = canvasHeight/2
-    }
-    else{
-        somaY = (canvasHeight/2)-centerY
+    else {
+        somaX = (canvasWidth / 2) - centerX
     }
 
-    console.log(somaY)
+    if (maxY == 0 && minY == 0) {
+        somaY = canvasHeight / 2
+    }
+    else {
+        somaY = (canvasHeight / 2) - centerY
+    }
+
+    // calculate scale
+    if ((maxX - minX) >= (maxY - minY)) {
+        factor = (canvasWidth) / (maxX - minX)
+    } else {
+        factor = (canvasHeight) / (maxY - minY)
+    }
+
+    factor *= 0.8
+
+    const translate_origin_x = minX + (maxX - minX)/2
+    const translate_origin_y= minY + (maxY - minY)/2
+
+    console.log(factor)
     context.clearRect(0, 0, canvasWidth, canvasHeight);
-    
-    for (var count = 0; count<points.length; count+=2){
+
+    for (var count = 0; count < points.length; count += 2) {
         aux1 = count
-        aux2 = count+1
+        aux2 = count + 1
         console.log(`count: ${aux1} aux: ${aux2}`)
-        p1x = points[aux1][0]+somaX
-        p1y = canvasHeight-points[aux1][1]-somaY
-        p2x = points[aux2][0]+somaX
-        p2y = canvasHeight-points[aux2][1]-somaY
-        drawLine(p1x,p1y,p2x,p2y)
+        p1x = ((points[aux1][0]-translate_origin_x) * factor)+canvasWidth/2
+        p1y = ((points[aux1][1]-translate_origin_y) * factor)+canvasHeight/2
+        p2x = ((points[aux2][0]-translate_origin_x) * factor)+canvasWidth/2
+        p2y = ((points[aux2][1]-translate_origin_y) * factor)+canvasHeight/2
+        console.log(`${p1x},${p1y},${p2x},${p2y}`)
+        drawLine(p1x, p1y, p2x, p2y)
         console.log(points)
     }
 }
-
