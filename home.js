@@ -42,9 +42,9 @@ function createLine() {
         minX = Math.min(...[minX,coordX1,coordX2]);
         minY = Math.min(...[minY,coordY1,coordY2]);
 
-        // createDraw(minX, minY, maxX, maxY);
-        scale = 1
-        draw();
+        createDraw(minX, minY, maxX, maxY);
+        // scale = 1
+        // draw();
     }
 }
 
