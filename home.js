@@ -17,17 +17,18 @@ const canvasHeight = canvas.height;
 
 context.lineWidth = 2;
 
-minX = Infinity;
-maxX = -Infinity;
-minY = Infinity;
-maxY = -Infinity;
+function defMaxMin(){
+    minX = Infinity;
+    maxX = -Infinity;
+    minY = Infinity;
+    maxY = -Infinity;
+}
 
 function createLine() {
     if (x1.value.length == 0 || y1.value.length == 0 || x2.value.length == 0 || y2.value.length == 0) {
         existPoint = false
         alert("Set all coordinates before")
     } else {
-
         var coordX1 = x1.value;
         var coordX2 = x2.value;
         var coordY1 = y1.value;
@@ -37,14 +38,20 @@ function createLine() {
         points.push([Number(coordX2), Number(coordY2)]);
         console.log(points);
 
-        maxX = Math.max(...[maxX,coordX1,coordX2]);
-        maxY = Math.max(...[maxY,coordY1,coordY2]);
-        minX = Math.min(...[minX,coordX1,coordX2]);
-        minY = Math.min(...[minY,coordY1,coordY2]);
-
+        defMaxMin();
+        verifyMaxMin();
         createDraw(minX, minY, maxX, maxY);
-        // scale = 1
-        // draw();
+    }
+}
+
+function verifyMaxMin(){
+    for(var i = 0; i<points.length-1; i++){
+        j = i+1
+        console.log(points)
+        maxX = Math.max(...[maxX,points[i][0],points[j][0]]);
+        maxY = Math.max(...[maxY,points[i][1],points[j][1]]);
+        minX = Math.min(...[minX,points[i][0],points[j][0]]);
+        minY = Math.min(...[minY,points[i][1],points[j][1]]);
     }
 }
 
@@ -58,15 +65,14 @@ function drawLine(x1, y1, x2, y2) {
 function clearCanvas() {
     context.clearRect(0, 0, canvasWidth, canvasHeight);
     points = [];
-    minX = Infinity;
-    maxX = -Infinity;
-    minY = Infinity;
-    maxY = -Infinity;
+    defMaxMin();
 }
 
 function undoLine() {
     points.pop();
     points.pop();
+    defMaxMin();
+    verifyMaxMin();
     createDraw(minX, minY, maxX, maxY);
 }
 
