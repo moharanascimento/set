@@ -114,9 +114,11 @@ function createDraw(minX, minY, maxX, maxY) {
         aux2 = count + 1
         console.log(`count: ${aux1} aux: ${aux2}`)
         p1x = ((points[aux1][0]-translate_origin_x) * factor)+canvasWidth/2
-        p1y = ((points[aux1][1]-translate_origin_y) * factor)+canvasHeight/2
+        // p1y = ((points[aux1][1]-translate_origin_y) * factor)+canvasHeight/2
+        p1y = canvasHeight-(((points[aux1][1]-translate_origin_y) * factor)+canvasHeight/2)
         p2x = ((points[aux2][0]-translate_origin_x) * factor)+canvasWidth/2
-        p2y = ((points[aux2][1]-translate_origin_y) * factor)+canvasHeight/2
+        // p2y = ((points[aux2][1]-translate_origin_y) * factor)+canvasHeight/2
+        p2y = canvasHeight-(((points[aux2][1]-translate_origin_y) * factor)+canvasHeight/2)
         console.log(`${p1x},${p1y},${p2x},${p2y}`)
         drawLine(p1x, p1y, p2x, p2y)
         console.log(points)
