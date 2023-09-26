@@ -131,17 +131,31 @@ function createDraw(minX, minY, maxX, maxY) {
 var divLM = document.getElementById('settLM')
 var divRec = document.getElementById('settRec')
 var divTrap = document.getElementById('settTrap')
-var divCreateLoad = document.getElementById('buttonLoad')
+var div1d = document.getElementById('sett1deg')
+var div2d = document.getElementById('sett2deg')
+var div3d = document.getElementById('sett3deg')
+var divCreateLoad = document.getElementById('createLoad')
+var divUndoLoad = document.getElementById('undoLoad')
+var divClearLoad = document.getElementById('clearLoad')
+var divCreateBC = document.getElementById('createBC')
+var divUndoBC = document.getElementById('undoBC')
+var divClearBC = document.getElementById('clearBC')
 var textLoad = document.getElementById('load-settings')
+var textBC = document.getElementById('boundary-settings')
 var display = 1
 
 function showSettMLoad(){
     if(display == 1)
     {
+        divCreateLoad.style.display = 'none';
+        divUndoLoad.style.display = 'none';
+        divClearLoad.style.display = 'none';
         divRec.style.display = 'none';
         divTrap.style.display = 'none';
         divLM.style.display = 'block';
         divCreateLoad.style.display = 'block';
+        divUndoLoad.style.display = 'block';
+        divClearLoad.style.display = 'block';
         textLoad.innerHTML = '';
     }
 }
@@ -150,10 +164,14 @@ function showSettRecLoad(){
     if(display == 1)
     {
         divCreateLoad.style.display = 'none';
+        divUndoLoad.style.display = 'none';
+        divClearLoad.style.display = 'none';
         divLM.style.display = 'none';
         divTrap.style.display = 'none';
         divRec.style.display = 'block';
         divCreateLoad.style.display = 'block';
+        divUndoLoad.style.display = 'block';
+        divClearLoad.style.display = 'block';
         textLoad.innerHTML = '';
     }
 }
@@ -162,14 +180,65 @@ function showSettTrapLoad(){
     if(display == 1)
     {
         divCreateLoad.style.display = 'none';
+        divUndoLoad.style.display = 'none';
+        divClearLoad.style.display = 'none';
         divLM.style.display = 'none';
         divRec.style.display = 'none';
         divTrap.style.display = 'block';
         divCreateLoad.style.display = 'block';
+        divUndoLoad.style.display = 'block';
+        divClearLoad.style.display = 'block';
         textLoad.innerHTML = '';
     }
 }
 
+function show1deg(){
+    if(display == 1)
+    {
+        divCreateBC.style.display = 'none';
+        divUndoBC.style.display = 'none';
+        divClearBC.style.display = 'none';
+        div2d.style.display = 'none';
+        div3d.style.display = 'none';
+        div1d.style.display = 'block';
+        divCreateBC.style.display = 'block';
+        divUndoBC.style.display = 'block';
+        divClearBC.style.display = 'block';
+        textBC.innerHTML = '';
+    }
+}
+
+function show2deg(){
+    if(display == 1)
+    {
+        divCreateBC.style.display = 'none';
+        divUndoBC.style.display = 'none';
+        divClearBC.style.display = 'none';
+        div1d.style.display = 'none';
+        div3d.style.display = 'none';
+        div2d.style.display = 'block';
+        divCreateBC.style.display = 'block';
+        divUndoBC.style.display = 'block';
+        divClearBC.style.display = 'block';
+        textBC.innerHTML = '';
+    }
+}
+
+function show3deg(){
+    if(display == 1)
+    {
+        divCreateBC.style.display = 'none';
+        divUndoBC.style.display = 'none';
+        divClearBC.style.display = 'none';
+        div1d.style.display = 'none';
+        div2d.style.display = 'none';
+        div3d.style.display = 'block';
+        divCreateBC.style.display = 'block';
+        divUndoBC.style.display = 'block';
+        divClearBC.style.display = 'block';
+        textBC.innerHTML = '';
+    }
+}
 // function createPorMLoad(){
 
 // }

@@ -140,19 +140,53 @@
                         </div>
                     </div>
                     <div class="container_buttons">
-                        <div id="buttonLoad" style="display: none;"><input id="bt" type="button" value="Create" onclick="createLoad()"></div>
+                        <div id="createLoad" style="display: none;"><input id="bt" type="button" value="Create" onclick="createLoad()"></div>
+                        <div id="undoLoad" style="display: none;"><input id="bt" type="button" value="Undo" onclick="undoLoad()"></div>
+                        <div id="clearLoad" style="display: none;"><input id="bt" type="button" value="Clear" onclick="clearLoad()"></div>
                     </div>
                     <p style="text-align: center;">Add boundary conditions</p>
                     <div class="boundary">
-                        <button type="button"><img src="images/1degree-support.png" height="35px"
-                                onclick="create1deg()"></button>
-                        <button type="button"><img src="images/2degree-support.png" height="35px"
-                                onclick="create2deg()"></button>
-                        <button type="button"><img src="images/3degree-support.png" height="35px"
-                                onclick="create3deg()"></button>
+                        <button type="button" style="margin-bottom: 10px;"><img src="images/1degree-support.png" height="35px"
+                                onclick="show1deg()"></button>
+                        <button type="button" style="margin-bottom: 10px;"><img src="images/2degree-support.png" height="35px"
+                                onclick="show2deg()"></button>
+                        <button type="button" style="margin-bottom: 10px;"><img src="images/3degree-support.png" height="35px"
+                                onclick="show3deg()"></button>
                     </div>
                     <div id="boundary-settings" class="box2">
                         <p id="lbc">Select one boundary condition above</p>
+                    </div>
+                    <div id="sett1deg" style="display: none;">
+                        <div class="container_input">
+                            <div id="inputs"><input type="number" name="x1d" id="x1d"> <strong>x</strong></div>
+                            <div id="inputs">
+                                <input type="number" name="y1d" id="y1d">
+                                <strong>y</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sett2deg" style="display: none;">
+                        <div class="container_input">
+                            <div id="inputs"><input type="number" name="x2d" id="x2d"> <strong>x</strong></div>
+                            <div id="inputs">
+                                <input type="number" name="y2d" id="y2d">
+                                <strong>y</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sett3deg" style="display: none;">
+                        <div class="container_input">
+                            <div id="inputs"><input type="number" name="x3d" id="x3d"> <strong>x</strong></div>
+                            <div id="inputs">
+                                <input type="number" name="y3d" id="y3d">
+                                <strong>y</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container_buttons">
+                        <div id="createBC" style="display: none;"><input id="bt" type="button" value="Create" onclick="createBC()"></div>
+                        <div id="undoBC" style="display: none;"><input id="bt" type="button" value="Undo" onclick="undoBC()"></div>
+                        <div id="clearBC" style="display: none;"><input id="bt" type="button" value="Clear" onclick="clearBC()"></div>
                     </div>
                 </div>
             </div>
