@@ -128,6 +128,48 @@ function createDraw(minX, minY, maxX, maxY) {
 }
 
 // Second part: Add loads
+var divLM = document.getElementById('settLM')
+var divRec = document.getElementById('settRec')
+var divTrap = document.getElementById('settTrap')
+var divCreateLoad = document.getElementById('buttonLoad')
+var textLoad = document.getElementById('load-settings')
+var display = 1
+
+function showSettMLoad(){
+    if(display == 1)
+    {
+        divRec.style.display = 'none';
+        divTrap.style.display = 'none';
+        divLM.style.display = 'block';
+        divCreateLoad.style.display = 'block';
+        textLoad.innerHTML = '';
+    }
+}
+
+function showSettRecLoad(){
+    if(display == 1)
+    {
+        divCreateLoad.style.display = 'none';
+        divLM.style.display = 'none';
+        divTrap.style.display = 'none';
+        divRec.style.display = 'block';
+        divCreateLoad.style.display = 'block';
+        textLoad.innerHTML = '';
+    }
+}
+
+function showSettTrapLoad(){
+    if(display == 1)
+    {
+        divCreateLoad.style.display = 'none';
+        divLM.style.display = 'none';
+        divRec.style.display = 'none';
+        divTrap.style.display = 'block';
+        divCreateLoad.style.display = 'block';
+        textLoad.innerHTML = '';
+    }
+}
+
 // function createPorMLoad(){
 
 // }

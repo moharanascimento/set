@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,20 @@
     <title>SET - Structure Educational Tool</title>
     <link rel="stylesheet" href="home.css">
 </head>
+
 <body>
     <header>
-            <img src="images/icon-set-font.png" alt="ícone">
-            <p id="set">
+        <img src="images/icon-set-font.png" alt="ícone">
+        <p id="set">
             SET - Structural Educational Tool
-            </p>
-            <nav class="about ml-auto"><a href="about/about-me.html" rel="next" target="_self"><strong>About me</strong></a></nav>
+        </p>
+        <nav class="about ml-auto"><a href="about/about-me.html" rel="next" target="_self"><strong>About me</strong></a>
+        </nav>
     </header>
     <main>
         <section class="grid1">
             <div>
-               <p id="title" style="text-align: center;">Start here</p>
+                <p id="title" style="text-align: center;">Start here</p>
                 <div id="user-menu">
                     <p style="text-align: center;">Create beam or column</p>
                     <div class="container_input">
@@ -43,39 +46,128 @@
                         <div id="button"><input id="bt" type="button" value="Undo" onclick="undoLine()"></div>
                         <div id="button"><input id="bt" type="button" value="Clear" onclick="clearCanvas()"></div>
                     </div>
-                </p>
+                    </p>
                     <p style="text-align: center;">Add loads</p>
                     <div class="loads">
-                        <button type="button"><img src="images/conc-and-mom-load.png" height="35px" onclick="createPorMLoad()"></button>
-                        <button type="button"><img src="images/retangular-load.png" height="35px" onclick="createRecLoad()"></button>
-                        <button type="button"><img src="images/trapezoidal-load.png" height="35px" onclick="createTrapLoad()"></button>
+                        <button type="button" style="margin-bottom: 10px;"><img src="images/conc-and-mom-load.png"
+                                height="35px" onclick="showSettMLoad()"></button>
+                        <button type="button" style="margin-bottom: 10px;"><img src="images/retangular-load.png"
+                                height="35px" onclick="showSettRecLoad()"></button>
+                        <button type="button" style="margin-bottom: 10px;"><img src="images/trapezoidal-load.png"
+                                height="35px" onclick="showSettTrapLoad()"></button>
                     </div>
                     <div id="load-settings" class="box">
-                            <p id="lbc">Select one load above</p>
+                        <p id="lbc">Select one load above</p>
+                    </div>
+                    <div id="settLM" style="display: none;">
+                        <div class="container_input">
+                            <div id="inputs"><input type="number" name="xl" id="xl"> <strong>x &nbsp;&nbsp;</strong>
+                            </div>
+                            <div id="inputs">
+                                <input type="number" name="yl" id="yl">
+                                <strong>y&nbsp;&nbsp;</strong>
+                            </div>
+                        </div>
+                        <div class="container_input">
+                            <div id="inputs">
+                                <input type="number" name="px" id="px">
+                                <strong>Px</strong>
+                            </div>
+                            <div id="inputs">
+                                <input type="number" name="py" id="py">
+                                <strong>Py</strong>
+                            </div>
+                        </div>
+                        <div class="container_input">
+                            <div id="inputs">
+                                <input type="number" name="mx" id="mx">
+                                <strong>Mx</strong>
+                            </div>
+                            <div id="inputs">
+                                <input type="number" name="my" id="my">
+                                <strong>My</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="settRec" style="display: none;">
+                        <div class="container_input">
+                            <div id="inputs"><input type="number" name="xr" id="xr"> <strong>x &nbsp;&nbsp;</strong>
+                            </div>
+                            <div id="inputs">
+                                <input type="number" name="yr" id="yr">
+                                <strong>y &nbsp;&nbsp;</strong>
+                            </div>
+                        </div>
+                        <div class="container_input">
+                            <div id="inputs">
+                                <input type="number" name="qx" id="qx">
+                                <strong>Qx</strong>
+                            </div>
+                            <div id="inputs">
+                                <input type="number" name="qy" id="qy">
+                                <strong>Qy</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="settTrap" style="display: none;">
+                        <div class="container_input">
+                            <div id="inputs"><input type="number" name="xt" id="xt"> <strong>x
+                                    &nbsp;&nbsp;&nbsp;&nbsp;</strong></div>
+                            <div id="inputs">
+                                <input type="number" name="yt" id="yt">
+                                <strong>y &nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                            </div>
+                        </div>
+                        <div class="container_input">
+                            <div id="inputs">
+                                <input type="number" name="qx1" id="qx1">
+                                <strong>Qx1</strong>
+                            </div>
+                            <div id="inputs">
+                                <input type="number" name="qx2" id="qx2">
+                                <strong>Qx2</strong>
+                            </div>
+                        </div>
+                        <div class="container_input">
+                            <div id="inputs">
+                                <input type="number" name="qy1" id="qy1">
+                                <strong>Qy1</strong>
+                            </div>
+                            <div id="inputs">
+                                <input type="number" name="qy2" id="qy2">
+                                <strong>Qy2</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container_buttons">
+                        <div id="buttonLoad" style="display: none;"><input id="bt" type="button" value="Create" onclick="createLoad()"></div>
                     </div>
                     <p style="text-align: center;">Add boundary conditions</p>
                     <div class="boundary">
-                        <button type="button"><img src="images/1degree-support.png" height="35px" onclick="create1deg()"></button>
-                        <button type="button"><img src="images/2degree-support.png" height="35px" onclick="create2deg()"></button>
-                        <button type="button"><img src="images/3degree-support.png" height="35px"onclick="create3deg()"></button>
+                        <button type="button"><img src="images/1degree-support.png" height="35px"
+                                onclick="create1deg()"></button>
+                        <button type="button"><img src="images/2degree-support.png" height="35px"
+                                onclick="create2deg()"></button>
+                        <button type="button"><img src="images/3degree-support.png" height="35px"
+                                onclick="create3deg()"></button>
                     </div>
                     <div id="boundary-settings" class="box2">
                         <p id="lbc">Select one boundary condition above</p>
+                    </div>
                 </div>
-               </div> 
             </div>
             <div>
                 <p id="title" style="text-align: center;">Model and results</p>
                 <div id="model">
                     <canvas id="myCanvas"></canvas>
-                </div> 
+                </div>
             </div>
             <div>
                 <p id="title" style="text-align: center;">How to do</p>
                 <div id="help-menu">
                     <p style="text-align: center;">1. Create a beam or column using coordinates</p>
                     <p style="text-indent: 20px">e.g.</p>
-               </div> 
+                </div>
             </div>
         </section>
         <div class="results">
@@ -87,4 +179,5 @@
     </footer>
     <script src="home.js"></script>
 </body>
+
 </html>
