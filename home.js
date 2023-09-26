@@ -229,3 +229,82 @@ function createTrapLoad(){
     createLabel('Qy2')
     buttonLoad()
 }
+
+var box2 = document.getElementById('boundary-settings')
+
+function createInput2(axis,count){
+    var element = document.createElement('input');
+    element.setAttribute('type','number');
+    element.setAttribute('name',axis+'l'+count); // to form xl1 ou xl2 or yl1 or yl2
+    element.setAttribute('id', axis+'l'+count);
+    element.style.marginTop = '10px';
+    element.style.marginLeft = '50px';
+    element.style.marginBottom = '10px';
+    element.style.width = '50px'
+    element.style.height = '25px'
+    box2.appendChild(element);
+}
+
+function createLabel2(name){
+    var element = document.createElement('label');
+    element.setAttribute('for','name');
+    element.innerHTML = name.bold();
+    element.style.marginRight = '10px';
+    box2.appendChild(element);
+}
+
+function buttonBoundary(){
+    var element = document.createElement('input');
+    element.setAttribute('type', 'button');
+    element.setAttribute('value', 'Create BC');
+    element.setAttribute('onClick', 'createBC()');
+    element.style.backgroundColor= '#3dac9f';
+    element.style.borderRadius = '20px';
+    element.style.width = '100%';
+    element.style.height = '30px';
+    element.style.display = 'block';
+    element.style.width = '100px'
+    element.style.fontFamily = 'Arial'
+    element.style.fontSize = '1rem'
+    element.style.fontWeight = '500'
+    element.style.color = '#000000be'
+    element.style.margin = 'auto'
+    element.style.textAlign = 'center'
+
+    element.addEventListener('mouseover', () => {
+        element.style.backgroundColor = '#3dac9f79';
+      });
+
+      element.addEventListener('mouseout', () => {
+        element.style.backgroundColor = '#3dac9f';
+      });
+
+    box2.appendChild(element);
+}
+
+function create1deg(){
+    box2.innerHTML = ''
+    createInput2('x',1)
+    createLabel2('x')
+    createInput2('y',1)
+    createLabel2('y')
+    buttonBoundary()
+}
+
+function create2deg(){
+    box2.innerHTML = ''
+    createInput2('x',1)
+    createLabel2('x')
+    createInput2('y',1)
+    createLabel2('y')
+    buttonBoundary()
+}
+
+function create3deg(){
+    box2.innerHTML = ''
+    createInput2('x',1)
+    createLabel2('x')
+    createInput2('y',1)
+    createLabel2('y')
+    buttonBoundary()
+}
