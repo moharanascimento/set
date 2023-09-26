@@ -1,3 +1,5 @@
+// First part: Create beam or column
+
 var x1 = document.getElementById('x1')
 var y1 = document.getElementById('y1')
 var x2 = document.getElementById('x2')
@@ -9,8 +11,8 @@ var existPoint = true
 canvas = document.getElementById("myCanvas")
 context = canvas.getContext('2d');
 
-canvas.width = 500;
-canvas.height = 500;
+canvas.width = 600;
+canvas.height = 600;
 
 const canvasWidth = canvas.width;
 const canvasHeight = canvas.height;
@@ -123,4 +125,107 @@ function createDraw(minX, minY, maxX, maxY) {
         drawLine(p1x, p1y, p2x, p2y)
         console.log(points)
     }
+}
+
+// Second part: Add loads
+var box = document.getElementById('load-settings')
+
+function createInput(axis,count){
+    var element = document.createElement('input');
+    element.setAttribute('type','number');
+    element.setAttribute('name',axis+'l'+count); // to form xl1 ou xl2 or yl1 or yl2
+    element.setAttribute('id', axis+'l'+count);
+    //element.style.margin = '20px';
+    element.style.marginTop = '10px';
+    element.style.marginLeft = '10px';
+    element.style.marginBottom = '10px';
+    element.style.width = '50px'
+    element.style.height = '25px'
+    element.style.display = 'inline'
+    element.style.alignSelf = 'center'
+    box.appendChild(element);
+}
+
+function createLabel(name){
+    var element = document.createElement('label');
+    element.setAttribute('for','name');
+    element.innerHTML = name.bold();
+    element.style.marginRight = '10px';
+    box.appendChild(element);
+}
+
+function buttonLoad(){
+    var element = document.createElement('input');
+    element.setAttribute('type', 'button');
+    element.setAttribute('value', 'Create Load');
+    element.setAttribute('onClick', 'createLoad()');
+    element.style.backgroundColor= '#3dac9f';
+    element.style.borderRadius = '20px';
+    element.style.width = '100%';
+    element.style.height = '30px';
+    element.style.display = 'block';
+    element.style.width = '100px'
+    element.style.fontFamily = 'Arial'
+    element.style.fontSize = '1rem'
+    element.style.fontWeight = '500'
+    element.style.color = '#000000be'
+    element.style.margin = 'auto'
+    element.style.textAlign = 'center'
+
+    element.addEventListener('mouseover', () => {
+        element.style.backgroundColor = '#3dac9f79';
+      });
+
+      element.addEventListener('mouseout', () => {
+        element.style.backgroundColor = '#3dac9f';
+      });
+
+    box.appendChild(element);
+}
+
+function createPorMLoad(){
+    box.innerHTML = ''
+    createInput('x',1)
+    createLabel('x&ensp;')
+    createInput('y',1)
+    createLabel('y&ensp;')
+    createInput('P','x')
+    createLabel('Px')
+    createInput('P','y')
+    createLabel('Py')
+    createInput('M','x')
+    createLabel('Mx')
+    createInput('M','y')
+    createLabel('My')
+    buttonLoad()
+}
+
+function createRecLoad(){
+    box.innerHTML = ''
+    createInput('x',1)
+    createLabel('x&ensp;')
+    createInput('y',1)
+    createLabel('y&ensp;')
+    createInput('Q','x')
+    createLabel('Qx')
+    createInput('Q','y')
+    createLabel('Qy')
+    buttonLoad()
+}
+
+function createTrapLoad(){
+    box.innerHTML = ''
+    createInput('x',1)
+    createLabel('x')
+    createInput('y',1)
+    createLabel('y')
+    createInput('Q','x1')
+    createLabel('Qx1')
+    createInput('Q','x2')
+    createLabel('Qx2')
+    createInput('Q','y1')
+    createLabel('Qy1')
+    createInput('Q','y2')
+    createLabel('Qy2')
+    buttonLoad()
 }

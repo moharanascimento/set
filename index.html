@@ -46,12 +46,12 @@
                 </p>
                     <p style="text-align: center;">Add loads</p>
                     <div class="loads">
-                        <button type="button"><img src="images/conc-and-mom-load.png" height="35px"></button>
-                        <button type="button"><img src="images/retangular-load.png" height="35px"></button>
-                        <button type="button"><img src="images/trapezoidal-load.png" height="35px"></button>
+                        <button type="button"><img src="images/conc-and-mom-load.png" height="35px" onclick="createPorMLoad()"></button>
+                        <button type="button"><img src="images/retangular-load.png" height="35px" onclick="createRecLoad()"></button>
+                        <button type="button"><img src="images/trapezoidal-load.png" height="35px" onclick="createTrapLoad()"></button>
                     </div>
-                    <div id="load-settings">
-                            <p>Select one load above</p>
+                    <div id="load-settings" class="box">
+                            <p id="lbc">Select one load above</p>
                     </div>
                     <p style="text-align: center;">Add boundary conditions</p>
                     <div class="boundary">
@@ -60,7 +60,7 @@
                         <button type="button"><img src="images/3degree-support.png" height="35px"></button>
                     </div>
                     <div id="boundary-settings">
-                        <p>Select one boundary condition above</p>
+                        <p id="lbc">Select one boundary condition above</p>
                 </div>
                </div> 
             </div>
