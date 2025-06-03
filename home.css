@@ -262,7 +262,7 @@ div#boundary-settings>p{
 canvas{
     display: flex;
     image-rendering: pixelated;
-    background-color: lightgray;
+    background-color: white;
     margin: 0 auto;
     border-radius: 15px;
 }
