@@ -114,18 +114,21 @@ p#results{
     margin-top: 60px;
 }
 
-@media (max-width: 600px){
-    .grid1{
+
+@media (max-width: 600px) {
+
+    .grid1 {
         display: grid;
         grid-template-columns: 1fr;
     }
-    #myCanvas{
-        display: flex;
-        image-rendering: pixelated;
-        margin: 0 auto;
-        margin-top: 15px;
+
+   canvas {
+        display: block;
+        margin: 15px auto 0 auto;
         border-radius: 15px;
+
         width: 100%;
+        height: 400px;  
     }
 }
 
@@ -265,4 +268,4 @@ canvas{
     background-color: white;
     margin: 0 auto;
     border-radius: 15px;
-}
+} 
