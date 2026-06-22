@@ -187,6 +187,7 @@ function clearCanvas() {
 function undoLine() {
     points.pop();
     points.pop();
+    updateBounds();
     render();
 }
 
