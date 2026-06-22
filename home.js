@@ -80,6 +80,16 @@ function snap(value) {
     return Math.round(value / gridStep) * gridStep;
 }
 
+function drawPoint(x, y, radius = 4) {
+
+    context.fillStyle = "#3dac9f84";
+
+    context.beginPath();
+    context.arc(x, y, radius, 0, Math.PI * 2);
+
+    context.fill();
+}
+
 function drawGrid() {
 
     context.strokeStyle = "#4f4b4b55";
@@ -105,6 +115,7 @@ function render() {
 
     context.clearRect(0, 0, canvas.width, canvas.height);
 
+    drawPoint();
     drawGrid();
     createDraw();
 
@@ -181,6 +192,7 @@ function clearCanvas() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     points = [];
     defMaxMin();
+    drawPoint();
     drawGrid();
 }
 
@@ -240,6 +252,8 @@ function createDraw() {
         const p2y = h / 2 - ((p2[1] - translate_origin_y) * factor);
 
         drawLine(p1x, p1y, p2x, p2y);
+        drawPoint(p1x, p1y, 4);
+        drawPoint(p2x, p2y, 4);
     }
 }
 
