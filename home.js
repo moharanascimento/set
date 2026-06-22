@@ -295,16 +295,6 @@ window.addEventListener("resize", () => {
 
 canvas.addEventListener("click", function (event) {
 
-    if (points.length === 0){
-        points.push([0,0]);
-        selectedPoint = [0,0];
-        minX = 0;
-        maxX = 30;
-        minY = 0;
-        maxY = 30;
-        return
-    }
-
     const rect = canvas.getBoundingClientRect();
 
     const x = event.clientX - rect.left;
@@ -313,33 +303,33 @@ canvas.addEventListener("click", function (event) {
     const snappedX = Math.round(x / gridStep) * gridStep;
     const snappedY = Math.round(y / gridStep) * gridStep;
 
+    // If there is no bar, so create an initial system
+    if (points.length === 0) {
+        minX = -10;
+        maxX = 10;
+        minY = -10;
+        maxY = 10;
+    }
+
     const world = screenToWorld(snappedX, snappedY);
 
     if (selectedPoint === null) {
 
+        // First click
         selectedPoint = [world.x, world.y];
 
     } else {
-        
-        if (points.length === 1){
-            points.push([world.x, world.y]);
-            selectedPoint = null;
-            render();
-            return
-        }
 
-
-        if (points.length >1){points.push(selectedPoint);
-        }
-        
+        // Second click
+        points.push(selectedPoint);
         points.push([world.x, world.y]);
 
         selectedPoint = null;
+
+        render();
     }
 
-    if (selectedPoint === null) 
-        {render()} 
-    console.log(points)
+    console.log(points);
 });
 
 function fitCanvas() {
