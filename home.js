@@ -181,6 +181,7 @@ function clearCanvas() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     points = [];
     defMaxMin();
+    drawGrid();
 }
 
 function undoLine() {
