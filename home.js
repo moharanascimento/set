@@ -5,7 +5,7 @@ var y1 = document.getElementById('y1')
 var x2 = document.getElementById('x2')
 var y2 = document.getElementById('y2')
 
-let points = []; // pares de pontos [x,y]
+let points = [];
 let selectedPoint = null;
 
 let minX = 0, maxX = 0, minY = 0, maxY = 0;
@@ -109,7 +109,7 @@ function drawGrid() {
         context.stroke();
     }
 
-    context.fillStyle = "#666"; // cor dos pontos
+    context.fillStyle = "#666"; // point color
 
     for (let x = 0; x <= canvas.width; x += gridStep) {
         for (let y = 0; y <= canvas.height; y += gridStep) {
@@ -119,7 +119,7 @@ function drawGrid() {
             context.arc(
                 x,
                 y,
-                1, // raio do ponto
+                1, // point radio
                 0,
                 Math.PI * 2
             );
@@ -295,13 +295,6 @@ window.addEventListener("resize", () => {
 
 canvas.addEventListener("click", function (event) {
 
-  /* if (points.length === 0){
-        points.push([0,0]);
-        selectedPoint = [0,0];
-        updateBounds();
-        return
-    }*/
-
     if (points.length === 0){
         points.push([0,0]);
         selectedPoint = [0,0];
@@ -342,8 +335,6 @@ canvas.addEventListener("click", function (event) {
         points.push([world.x, world.y]);
 
         selectedPoint = null;
-
-        /*updateBounds();*/
     }
 
     if (selectedPoint === null) 
