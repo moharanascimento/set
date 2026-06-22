@@ -310,7 +310,7 @@ canvas.addEventListener("click", function (event) {
 
         selectedPoint = null;
 
-        updateBounds();
+        /*updateBounds();*/
     }
 
     if (selectedPoint === null) 
