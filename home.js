@@ -295,6 +295,14 @@ canvas.addEventListener("click", function (event) {
 
     } else {
         
+        if (points.length === 1){
+            points.push([world.x, world.y]);
+            selectedPoint = null;
+            render();
+            return
+        }
+
+
         if (points.length >1){points.push(selectedPoint);
         }
         
@@ -305,7 +313,8 @@ canvas.addEventListener("click", function (event) {
         updateBounds();
     }
 
-    render(); 
+    if (selectedPoint === null) 
+        {render()} 
     console.log(points)
 });
 
