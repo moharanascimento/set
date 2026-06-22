@@ -187,8 +187,6 @@ function clearCanvas() {
 function undoLine() {
     points.pop();
     points.pop();
-    defMaxMin();
-    createDraw(minX, minY, maxX, maxY);
     render();
 }
 
