@@ -348,6 +348,57 @@ function initCanvas() {
     render();
 }
 
+let viewMinX, viewMaxX;
+let viewMinY, viewMaxY;
+
+function fitView() {
+
+    updateBounds();
+
+    viewMinX = minX;
+    viewMaxX = maxX;
+    viewMinY = minY;
+    viewMaxY = maxY;
+
+    render();
+}
+
+function zoomIn() {
+
+    const zoomFactor = 0.8; // 20% mais próximo
+
+    const centerX = (minX + maxX) / 2;
+    const centerY = (minY + maxY) / 2;
+
+    const halfWidth = (maxX - minX) * zoomFactor / 2;
+    const halfHeight = (maxY - minY) * zoomFactor / 2;
+
+    minX = centerX - halfWidth;
+    maxX = centerX + halfWidth;
+    minY = centerY - halfHeight;
+    maxY = centerY + halfHeight;
+
+    render();
+}
+
+function zoomOut() {
+
+    const zoomFactor = 1.25; // 25% mais distante
+
+    const centerX = (minX + maxX) / 2;
+    const centerY = (minY + maxY) / 2;
+
+    const halfWidth = (maxX - minX) * zoomFactor / 2;
+    const halfHeight = (maxY - minY) * zoomFactor / 2;
+
+    minX = centerX - halfWidth;
+    maxX = centerX + halfWidth;
+    minY = centerY - halfHeight;
+    maxY = centerY + halfHeight;
+
+    render();
+}
+
 window.addEventListener("load", initCanvas);
 window.addEventListener("resize", initCanvas);
 
