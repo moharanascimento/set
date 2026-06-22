@@ -109,6 +109,25 @@ function drawGrid() {
         context.stroke();
     }
 
+    context.fillStyle = "#666"; // cor dos pontos
+
+    for (let x = 0; x <= canvas.width; x += gridStep) {
+        for (let y = 0; y <= canvas.height; y += gridStep) {
+
+            context.beginPath();
+
+            context.arc(
+                x,
+                y,
+                1, // raio do ponto
+                0,
+                Math.PI * 2
+            );
+
+            context.fill();
+        }
+    }
+
 }
 
 function render() {
