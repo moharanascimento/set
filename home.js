@@ -187,8 +187,8 @@ function undoLine() {
     points.pop();
     points.pop();
     defMaxMin();
-    verifyMaxMin();
     createDraw(minX, minY, maxX, maxY);
+    render();
 }
 
 
@@ -262,10 +262,20 @@ window.addEventListener("resize", () => {
 
 canvas.addEventListener("click", function (event) {
 
-    if (points.length === 0){
+  /* if (points.length === 0){
         points.push([0,0]);
         selectedPoint = [0,0];
         updateBounds();
+        return
+    }*/
+
+    if (points.length === 0){
+        points.push([0,0]);
+        selectedPoint = [0,0];
+        minX = 0;
+        maxX = 30;
+        minY = 0;
+        maxY = 30;
         return
     }
 
