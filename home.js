@@ -1,5 +1,7 @@
 // First part: Create beam or column
 
+
+// Coordinates with inputs
 var x1 = document.getElementById('x1')
 var y1 = document.getElementById('y1')
 var x2 = document.getElementById('x2')
@@ -7,11 +9,9 @@ var y2 = document.getElementById('y2')
 
 let points = [];
 let selectedPoint = null;
+var existPoint = true;
 
-let minX = 0, maxX = 0, minY = 0, maxY = 0;
-
-var existPoint = true
-
+// Canvas
 canvas = document.getElementById("myCanvas")
 context = canvas.getContext('2d');
 
@@ -25,70 +25,9 @@ function getCanvasSize() {
     };
 }
 
-context.lineWidth = 2;
-
-function defMaxMin(){
-    minX = Infinity;
-    maxX = -Infinity;
-    minY = Infinity;
-    maxY = -Infinity;
-}
-
-defMaxMin();
-
-
-// Grid functions
+// Grid and drawing functions
 
 const gridStep = 20;
-
-function screenToWorld(x, y) {
-
-    const w = canvas.width;
-    const h = canvas.height;
-
-    const translate_origin_x = (minX + maxX) / 2;
-    const translate_origin_y = (minY + maxY) / 2;
-
-    let factor;
-
-    if ((maxX - minX) >= (maxY - minY)) {
-        factor = w / (maxX - minX || 1);
-    } else {
-        factor = h / (maxY - minY || 1);
-    }
-
-    factor *= 0.8;
-
-    return {
-        x: (x - w / 2) / factor + translate_origin_x,
-        y: (h / 2 - y) / factor + translate_origin_y  
-    };
-}
-
-function worldToScreen(px, py, originX, originY, factor) {
-
-    const w = canvas.width;
-    const h = canvas.height;
-
-    return {
-        x: ((px - originX) * factor) + w / 2,
-        y: h / 2 - ((py - originY) * factor)
-    };
-}
-
-function snap(value) {
-    return Math.round(value / gridStep) * gridStep;
-}
-
-function drawPoint(x, y, radius = 4) {
-
-    context.fillStyle = "#3dac9f84";
-
-    context.beginPath();
-    context.arc(x, y, radius, 0, Math.PI * 2);
-
-    context.fill();
-}
 
 function drawGrid() {
 
@@ -130,72 +69,14 @@ function drawGrid() {
 
 }
 
-function render() {
+function drawPoint(x, y, radius = 4) {
 
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = "#3dac9f84";
 
-    drawPoint();
-    drawGrid();
-    createDraw();
+    context.beginPath();
+    context.arc(x, y, radius, 0, Math.PI * 2);
 
-}
-
-function getMouse(event) {
-
-    const rect = canvas.getBoundingClientRect();
-
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
-
-    return {
-        x: (event.clientX - rect.left) * scaleX,
-        y: (event.clientY - rect.top) * scaleY
-    };
-
-}
-
-
-function createLine() {
-
-    if (
-        x1.value === "" ||
-        y1.value === "" ||
-        x2.value === "" ||
-        y2.value === ""
-    ) {
-        alert("Set all coordinates before");
-        return;
-    }
-
-    points.push([
-        Number(x1.value),
-        Number(y1.value)
-    ]);
-
-    points.push([
-        Number(x2.value),
-        Number(y2.value)
-    ]);
-
-    updateBounds();
-    render();
-    console.log(points)
-}
-
-function updateBounds() {
-
-    defMaxMin();
-
-    for (let i = 0; i < points.length; i++) {
-
-        const x = points[i][0];
-        const y = points[i][1];
-
-        minX = Math.min(minX, x);
-        maxX = Math.max(maxX, x);
-        minY = Math.min(minY, y);
-        maxY = Math.max(maxY, y);
-    }
+    context.fill();
 }
 
 function drawLine(x1, y1, x2, y2) {
@@ -207,22 +88,7 @@ function drawLine(x1, y1, x2, y2) {
     context.stroke();
 }
 
-function clearCanvas() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    points = [];
-    defMaxMin();
-    drawPoint();
-    drawGrid();
-}
-
-function undoLine() {
-    points.pop();
-    points.pop();
-    updateBounds();
-    render();
-}
-
-
+// Function to create draw with saved points and lines
 function createDraw() {
 
     if (points.length < 2) return;
@@ -276,22 +142,124 @@ function createDraw() {
     }
 }
 
-// Add click on grid function
+// Auxiliary function to define initial limits and adjust canvas bounds recursively
+function defMaxMin(){
+    minX = Infinity;
+    maxX = -Infinity;
+    minY = Infinity;
+    maxY = -Infinity;
+}
 
-function resizeCanvas() {
+// Function to adjust bounds and fit the drawing
+function updateBounds() {
 
+    defMaxMin();
+
+    for (let i = 0; i < points.length; i++) {
+
+        const x = points[i][0];
+        const y = points[i][1];
+
+        minX = Math.min(minX, x);
+        maxX = Math.max(maxX, x);
+        minY = Math.min(minY, y);
+        maxY = Math.max(maxY, y);
+    }
+}
+
+// Function to show grid, points and lines on canvas
+function render() {
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawPoint();
+    drawGrid();
+    createDraw();
+
+}
+
+// Function to initialize the canvas
+function initCanvas() {
     const rect = canvas.getBoundingClientRect();
 
     canvas.width = rect.width;
     canvas.height = rect.height;
 
+    render();
 }
 
+window.addEventListener("load", initCanvas);
 
-window.addEventListener("resize", () => {
-    resizeCanvas();
+// Function to create line through inputs
+function createLine() {
+
+    if (
+        x1.value === "" ||
+        y1.value === "" ||
+        x2.value === "" ||
+        y2.value === ""
+    ) {
+        alert("Set all coordinates before");
+        return;
+    }
+
+    points.push([
+        Number(x1.value),
+        Number(y1.value)
+    ]);
+
+    points.push([
+        Number(x2.value),
+        Number(y2.value)
+    ]);
+
+    updateBounds();
     render();
-});
+    console.log(points)
+}
+
+// Function to undo the last created line
+function undoLine() {
+    points.pop();
+    points.pop();
+    updateBounds();
+    render();
+}
+
+// Function to clear all canvas and reset points
+function clearCanvas() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    points = [];
+    defMaxMin();
+    drawPoint();
+    drawGrid();
+}
+
+// Functions to create line with click
+
+function screenToWorld(x, y) {
+
+    const w = canvas.width;
+    const h = canvas.height;
+
+    const translate_origin_x = (minX + maxX) / 2;
+    const translate_origin_y = (minY + maxY) / 2;
+
+    let factor;
+
+    if ((maxX - minX) >= (maxY - minY)) {
+        factor = w / (maxX - minX || 1);
+    } else {
+        factor = h / (maxY - minY || 1);
+    }
+
+    factor *= 0.8;
+
+    return {
+        x: (x - w / 2) / factor + translate_origin_x,
+        y: (h / 2 - y) / factor + translate_origin_y  
+    };
+}
 
 canvas.addEventListener("click", function (event) {
 
@@ -332,22 +300,7 @@ canvas.addEventListener("click", function (event) {
     console.log(points);
 });
 
-function fitCanvas() {
-    const rect = canvas.getBoundingClientRect();
-
-    canvas.width = rect.width;
-    canvas.height = rect.height;
-}
-
-function initCanvas() {
-    const rect = canvas.getBoundingClientRect();
-
-    canvas.width = rect.width;
-    canvas.height = rect.height;
-
-    render();
-}
-
+// Functions to Fit canvas and apply zoom (in and out)
 let viewMinX, viewMaxX;
 let viewMinY, viewMaxY;
 
@@ -399,10 +352,11 @@ function zoomOut() {
     render();
 }
 
-window.addEventListener("load", initCanvas);
-window.addEventListener("resize", initCanvas);
+
 
 // Second part: Add loads
+
+
 var divLM = document.getElementById('settLM')
 var divRec = document.getElementById('settRec')
 var divTrap = document.getElementById('settTrap')
